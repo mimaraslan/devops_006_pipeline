@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops_005_pipeline
+  labels:
+    app: devops_005_pipeline
+    team: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops_005_pipeline
+  template:
+    metadata:
+      labels:
+        app: devops_005_pipeline
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: devops_005_pipeline
+        image: mimaraslan/devops_005_pipeline:latest
+        imagePullPolicy: "Always"
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
