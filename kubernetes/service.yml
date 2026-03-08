@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: devops_005_pipeline
+  name: devops_006_pipeline
   labels:
-    app: devops_005_pipeline
+    app: devops_006_pipeline
     team: frontend  
 spec:
   type: LoadBalancer
@@ -11,5 +11,5 @@ spec:
     - port: 80
       targetPort: 3000
   selector:
-    app: devops_005_pipeline
+    app: devops_006_pipeline
 

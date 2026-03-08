@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devops_005_pipeline
+  name: devops_006_pipeline
   labels:
-    app: devops_005_pipeline
+    app: devops_006_pipeline
     team: frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: devops_005_pipeline
+      app: devops_006_pipeline
   template:
     metadata:
       labels:
-        app: devops_005_pipeline
+        app: devops_006_pipeline
     spec:
       terminationGracePeriodSeconds: 30
       containers:
-      - name: devops_005_pipeline
-        image: mimaraslan/devops_005_pipeline:latest
+      - name: devops_006_pipeline
+        image: mimaraslan/devops_006_pipeline:latest
         imagePullPolicy: "Always"
         resources:
           limits:
