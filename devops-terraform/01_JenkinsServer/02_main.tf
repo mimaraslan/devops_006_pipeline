@@ -1,12 +1,12 @@
 resource "aws_instance" "web" {
   ami                    = "ami-0b6c6ebed2801a5cb"
   instance_type          = "t3.xlarge"               
-  key_name               = "My-KeyPair-Terraform"
+  key_name               = "My-Ubuntu-Key"
   vpc_security_group_ids = [aws_security_group.My-Jenkins-Server-SG.id]
   user_data              = templatefile("./03_install.sh", {}) 
 
   tags = {
-    Name = "My-Jenkins-Server" 
+    Name = "My-Jenkins-Server2"
   }
 
   root_block_device {

@@ -90,3 +90,4 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+devops-terraform/01_JenkinsServer/.terraform.lock.hcl

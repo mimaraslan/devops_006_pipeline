@@ -2,19 +2,20 @@
 sudo apt update
 sudo apt upgrade  -y
 
+
 #java
-wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | tee /etc/apt/keyrings/adoptium.asc
-echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list
-sudo apt update -y
-sudo apt install temurin-17-jdk -y
+sudo apt install openjdk-21-jre-headless -y
 /usr/bin/java –version
 
 
 #jenkins
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
-sudo apt-get update -y
-sudo apt-get install jenkins -y
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+https://pkg.jenkins.io/debian/jenkins.io-2026.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+https://pkg.jenkins.io/debian binary/ | sudo tee \
+/etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update
+sudo apt install jenkins   -y
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
@@ -23,14 +24,15 @@ sudo systemctl status jenkins
 #docker
 sudo apt-get update
 sudo apt-get install docker.io -y
-sudo usermod -aG docker ubuntu
+sudo usermod -a -G docker $USER
+#sudo usermod -aG docker ubuntu
 sudo usermod -aG docker jenkins  
 newgrp docker
 sudo chmod 777 /var/run/docker.sock
 
 
 #sonarqube
-docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+docker run -d --name sonar -p 9000:9000 sonarqube:latest
 
 # Bilgisayar acildigida Docker'in uzerinde calisan sonarqube containerlarıni otomatik çalıştırma yapilacak.
 # docker ps -a
@@ -42,7 +44,6 @@ wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dear
 echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
 sudo apt-get update
 sudo apt-get install trivy -y
-
 
 #curl
 sudo apt install curl
@@ -66,16 +67,16 @@ sudo mv /tmp/eksctl /bin
 
 
 
-# EKS burada kurulu değil.
+# EKS nodeları burada kurulu değil.
 sudo apt update
 sudo apt upgrade -y
 
 
-#  EKSyi de Terraform üzerinden kurmayı hedefliyoruz.
+#  EKSyi de Terraform üzerinden kuruyoruz. En az 1 node gerekli.
 #eksctl create cluster --name my-workspace-cluster \
-#--region us-west-1 \
+#--region us-east-1 \
 #--node-type t3.large \
-#--nodes 2
+#--nodes 1
 
 ### Helm kurulumu
 #curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
