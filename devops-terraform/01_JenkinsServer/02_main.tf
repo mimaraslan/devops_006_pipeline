@@ -12,7 +12,6 @@ resource "aws_instance" "web" {
   root_block_device {
     volume_size = 20
   }
-
 }
 
 resource "aws_security_group" "My-Jenkins-Server-SG" {
