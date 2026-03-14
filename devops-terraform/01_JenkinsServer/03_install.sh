@@ -79,19 +79,23 @@ sudo mv /tmp/eksctl /bin
 sudo apt update
 sudo apt upgrade -y
 
-#  EKSyi de Terraform üzerinden kuruyoruz. En az 1 node gerekli. Kullaniciya admin rolü vermek lazım.
-eksctl create cluster --name my-workspace-cluster \
- --region us-east-1 \
- --node-type t3.xlarge \
- --nodes 2
+#  EKSyi kuracak olan makineye admin rolü vermek lazım.
+#  EKSyi de Terraform üzerinden kuruyoruz. En az 1 node gerekli.
+#eksctl create cluster --name my-workspace-cluster \
+# --region us-east-1 \
+# --node-type t3.xlarge \
+# --nodes 2
 
 
 ### Helm kurulumu
 #curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 #chmod 700 get_helm.sh
 #./get_helm.sh
+## helm version
+#
 #helm repo add stable https://charts.helm.sh/stable
 #helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+#
 #kubectl create namespace prometheus
 #helm install stable prometheus-community/kube-prometheus-stack -n prometheus
 #kubectl get pods -n prometheus
