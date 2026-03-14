@@ -15,6 +15,15 @@ resource "aws_instance" "web" {
 }
 
 
+// GÖREV 1:
+// IP sabitleme Terraform ile yapılacak.
+
+
+// GÖREV 2:
+// Admin Rolü tamınlanacak.
+// EKS'yi kuracak bu makineye EC2 Admin Rolü verilecek.
+
+
 resource "aws_security_group" "My-Jenkins-Server-SG" {
   name        = "My-Jenkins-Server-SG" #
   description = "Allow TLS inbound traffic"
