@@ -14,7 +14,7 @@ IaC:             (Terraform, Ansible, CloudFormation)
 Monitoring:      (Prometheus, Grafana, ELK)
 ```
 
-![DevOps 3 - Cloud Terraform.jpg](public/DevOps%203%20-%20Cloud%20Terraform.jpg)
+![DevOps 3 - Cloud_Terraform.jpg](public/DevOps%203%20-%20Cloud_Terraform.jpg)
 
 ---
 
