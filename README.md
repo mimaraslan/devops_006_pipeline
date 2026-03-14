@@ -530,7 +530,7 @@ kubectl delete namespace prometheus
 
 ### Elimizle kurduğumuz EKS'deki nodeları ve onların kullandığı tüm AWS kaynaklarını hepten silme komutları
 ```
-export AWS_DEFAULT_REGION=us-west-1
+export AWS_DEFAULT_REGION=us-east-2
 eksctl delete cluster   --name my-workspace-cluster
 ```
 ---
