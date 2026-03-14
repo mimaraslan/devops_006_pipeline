@@ -18,11 +18,11 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: devops_006_pipeline
-        image: mimaraslan/devops_006_pipeline:latest
+        image: mimaraslan/devops-006-pipeline:latest
         imagePullPolicy: "Always"
         resources:
           limits:
-            memory: "512Mi"
-            cpu: "500m"
+            memory: "1000Mi"
+            cpu: "1000m"
         ports:
         - containerPort: 3000
