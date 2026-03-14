@@ -93,6 +93,14 @@ docker start CONTAINER_ID
 docker ps -a
 ```
 
+#### Jenkins için Jenkins makinesinin PUBLIC_IP'sini alıp 8080 portuna gideceğiz.
+
+http://PUBLIC_IP:8080
+
+```
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
 #### SonarQube için Jenkins makinesinin PUBLIC_IP'sini alıp 9000 portuna gideceğiz.
 
 http://PUBLIC_IP:9000
@@ -103,10 +111,3 @@ http://PUBLIC_IP:9000
 http://PUBLIC_IP:3000
 
 
-#### Jenkins için Jenkins makinesinin PUBLIC_IP'sini alıp 8080 portuna gideceğiz.
-
-http://PUBLIC_IP:8080
-
-```
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-```

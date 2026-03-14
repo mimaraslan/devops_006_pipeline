@@ -4,7 +4,7 @@ sudo apt upgrade  -y
 
 
 #java
-sudo apt install openjdk-21-jre-headless -y
+sudo apt install openjdk-21-jdk -y
 /usr/bin/java –version
 
 
