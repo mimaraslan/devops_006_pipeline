@@ -32,11 +32,18 @@ sudo chmod 777 /var/run/docker.sock
 
 
 #sonarqube
-docker run -d --name sonar -p 9000:9000 sonarqube:latest
+docker run -d --name sonar -p 9000:9000   --restart unless-stopped  sonarqube:latest
 
 # Bilgisayar acildigida Docker'in uzerinde calisan sonarqube containerlarıni otomatik çalıştırma yapilacak.
 # docker ps -a
 # docker start SONAR_CONTAINER_ID
+
+#docker run -d
+#  --name sonarqube \
+#  -p 9000:9000 \
+#  --restart unless-stopped \
+#  sonarqube:latest
+
 
 #trivy
 sudo apt-get install wget apt-transport-https gnupg lsb-release -y
@@ -45,8 +52,10 @@ echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.
 sudo apt-get update
 sudo apt-get install trivy -y
 
+
 #curl
 sudo apt install curl
+
 
 #awscliv2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -54,9 +63,11 @@ sudo apt install unzip
 unzip awscliv2.zip
 sudo ./aws/install
 
+
 #kubectl
 curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
 
 #eksctl
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -64,19 +75,16 @@ cd /tmp
 sudo mv /tmp/eksctl /bin
 
 
-
-
-
 # EKS nodeları burada kurulu değil.
 sudo apt update
 sudo apt upgrade -y
 
-
-#  EKSyi de Terraform üzerinden kuruyoruz. En az 1 node gerekli.
+#  EKSyi de Terraform üzerinden kuruyoruz. En az 1 node gerekli. Admin rolü vermek lazım.
 #eksctl create cluster --name my-workspace-cluster \
 #--region us-east-1 \
 #--node-type t3.large \
 #--nodes 1
+
 
 ### Helm kurulumu
 #curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3

@@ -6,13 +6,14 @@ resource "aws_instance" "web" {
   user_data              = templatefile("./03_install.sh", {}) 
 
   tags = {
-    Name = "My-Jenkins-Server2"
+    Name = "My-Jenkins-Server"
   }
 
   root_block_device {
     volume_size = 20
   }
 }
+
 
 resource "aws_security_group" "My-Jenkins-Server-SG" {
   name        = "My-Jenkins-Server-SG" #
@@ -44,6 +45,9 @@ resource "aws_security_group" "My-Jenkins-Server-SG" {
   }
 
 }
+
+
+
 
 
 
