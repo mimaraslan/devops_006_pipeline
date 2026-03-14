@@ -79,11 +79,11 @@ sudo mv /tmp/eksctl /bin
 sudo apt update
 sudo apt upgrade -y
 
-#  EKSyi de Terraform üzerinden kuruyoruz. En az 1 node gerekli. Admin rolü vermek lazım.
-#eksctl create cluster --name my-workspace-cluster \
-#--region us-east-1 \
-#--node-type t3.large \
-#--nodes 1
+#  EKSyi de Terraform üzerinden kuruyoruz. En az 1 node gerekli. Kullaniciya admin rolü vermek lazım.
+eksctl create cluster --name my-workspace-cluster \
+ --region us-east-1 \
+ --node-type t3.xlarge \
+ --nodes 2
 
 
 ### Helm kurulumu
