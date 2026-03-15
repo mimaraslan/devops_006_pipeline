@@ -101,8 +101,10 @@ pipeline {
                 script {
                     if (isUnix()) {
                         sh "docker image prune -f"
+                        //  sh "docker system prune -af || true"
                     } else {
                         bat "docker image prune -f"
+                      //  bat "docker system prune -af || true"
                     }
                 }
             }
@@ -253,12 +255,18 @@ pipeline {
 
 */
 
-
-
-
+/*
+        stage('Clean to Trivy Cache') {
+            steps {
+                sh '''
+                echo "Cleaning Trivy cache..."
+                trivy clean --all || true
+                '''
+            }
+        }
+        */
 
     }
-
 
 
     post {
@@ -268,7 +276,7 @@ pipeline {
             body: "Project: ${env.JOB_NAME}<br/>" +
                 "Build Number: ${env.BUILD_NUMBER}<br/>" +
                 "URL: ${env.BUILD_URL}<br/>",
-            to: 'dr.mimaraslan@gmail.com',
+            to: 'YOUR_MAIL@gmil.com',
             attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
         }
     }
